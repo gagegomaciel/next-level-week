@@ -1,10 +1,14 @@
+import 'reflect-metadata';
 import express from 'express';
 
-const app = express();
+import { router } from './routes';
 
-app.get('/', (req, res) => {
-  return res.json({ message: 'Hello World' });
-});
+import './database';
+
+const app = express();
+ 
+app.use(express.json());
+app.use(router);
 
 app.listen(3333, () => {
   console.log("Server Stareted on port 3333!");
